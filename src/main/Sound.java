@@ -12,6 +12,7 @@ public class Sound {
 
     public Sound(){
         soundURL[0] = getClass().getResource("/sound/song.wav");
+        soundURL[1] = getClass().getResource("/sound/goal.wav");
         
         
     }
@@ -24,7 +25,7 @@ public class Sound {
             clip.open(ais);
             FloatControl gainControl = 
             (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-40.0f);
+            gainControl.setValue(-20.0f);
             
         }catch(Exception e){
             e.printStackTrace();

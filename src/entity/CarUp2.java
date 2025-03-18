@@ -7,15 +7,19 @@ public class CarUp2 extends Entity {
 
     public CarUp2(GamePanel gp) {
         super(gp);
-
+        collisionOn = false;
         direction = "up";
         speed = 2;
         getImage();
+        type = 3;
 
     }
 
     public void getImage() {
-        red = setUp("/npc/58");
+       up1 = setUp("/npc/up2");
+        up2 = setUp("/npc/up2");
+        down1 = setUp("/npc/down1");
+        down2 = setUp("/npc/down1");
     }
 
     @Override

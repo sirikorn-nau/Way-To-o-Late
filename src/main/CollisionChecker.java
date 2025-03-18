@@ -67,6 +67,7 @@ public class CollisionChecker {
         // boolean is check wa object that comes in collision with is player or not ? or maybe it will be car so it cannot that HP will decrease ....
         int index = 999;
         for (int i = 0; i < gp.obj.length; i++) {
+//                System.out.println(gp.obj[i] + "" + i);
             if (gp.obj[i] != null) {
                 // get entity's solid area position
                 entity.solidArea.x = entity.worldX + entity.solidArea.x;
@@ -77,19 +78,17 @@ public class CollisionChecker {
 
                 switch (entity.direction) {
                     case "up":
-                        
                         entity.solidArea.y -= entity.speed; // y position this entity will be after it moved
+                        // intersects = auto check two rectangles are colliding or not ? or touching ?
                         break;
-                    case "down": entity.solidArea.y += entity.speed; ; break;
-                    case "left": entity.solidArea.x -= entity.speed; ; break;
-                    case "right": entity.solidArea.x += entity.speed; ;break;
+                    case "down": entity.solidArea.y += entity.speed; break;
+                    case "left": entity.solidArea.x -= entity.speed; break;
+                    case "right": entity.solidArea.x += entity.speed; break;
                 }
 
-                // intersects = auto check two rectangles are colliding or not ? or touching ?
                 if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
                     if (gp.obj[i].collision == true) {
                         entity.collisionOn = true;
-                        
                     }
                     if (player == true) {
                         index = i;
@@ -103,15 +102,11 @@ public class CollisionChecker {
 
             }
         }
-//        System.out.println(index);
         return index;
     }
 
-    // check npc or monster Ex cat, car
+    // check npc or monster
     public int checkEntity(Entity entity, Entity[] target) {
-
-        // check NPC collision
-//            int npcIndex = gp.cChecker.checkEntity(player, gp.npc);
 
         int index = 999; // if collision didn't happen it return 999
         for (int i = 0; i < target.length; i++) {
@@ -131,16 +126,11 @@ public class CollisionChecker {
                     case "right": entity.solidArea.x += entity.speed; break;
                 }
 
-             
                 if (entity.solidArea.intersects(target[i].solidArea)) {
-                    // if target = car, CollisionOn = true
                     if(target[i] != entity){
                         entity.collisionOn = true;
                         index = i;
                     }
-                    
-                   
-                          
                 }
 
                 entity.solidArea.x = entity.solidAreaDefaultX;

@@ -7,15 +7,19 @@ public class CarUp1 extends Entity {
 
     public CarUp1(GamePanel gp) {
         super(gp);
-
         direction = "up";
         speed = 2;
         getImage();
+        collisionOn = false;
+        type = 3;
 
     }
 
     public void getImage() {
-        red = setUp("/npc/59");
+        up1 = setUp("/npc/up1");
+        up2 = setUp("/npc/up1");
+        down1 = setUp("/npc/down2");
+        down2 = setUp("/npc/down2");
     }
 
     @Override
@@ -23,7 +27,7 @@ public class CarUp1 extends Entity {
         // set cat behavior
 
         actionLockCounter++;
-        
+
         if (actionLockCounter == 2350) {
             if (direction.equals("up")) {
                 direction = "left";
@@ -33,16 +37,12 @@ public class CarUp1 extends Entity {
         }
         if (actionLockCounter == 2400) {
             // direction won't change for the next 120 seconds
-//            Random random = new Random();
-//            int i = random.nextInt(100)+1; // pick up num from 1-100
             if (direction.equals("right")) {
                 direction = "up";
             } else {
                 direction = "down";
             }
-
             actionLockCounter = 0;
-
         }
 
     }

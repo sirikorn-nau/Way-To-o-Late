@@ -1,4 +1,5 @@
 package main;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -11,145 +12,148 @@ import object.OBJ_Heart;
 import object.SuperObject;
 
 public class UI {
+
     GamePanel gp;
     Graphics2D g2;
-    Font arial, pixelBoy, eightBitDragon, endlessBoss, eightBit;
-    BufferedImage heart_full, heart_blank; 
+    Font eightBitDragon;
+    BufferedImage heart_full, heart_blank;
     public boolean messageOn = false;
     public String messageDamage = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
-    
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public int commandNum = 0;
-    
-    public UI(GamePanel gp){
-        this.gp = gp;
-        arial = new Font("Arial", Font.PLAIN, 40);
 
+    public UI(GamePanel gp) {
+        this.gp = gp;
+        
         try {
-            InputStream is = getClass().getResourceAsStream("/font/Pixeboy-z8XGD.ttf");
-            pixelBoy = Font.createFont(Font.TRUETYPE_FONT, is);
-            is = getClass().getResourceAsStream("/font/8-BIT WONDER.TTF");
-            eightBit = Font.createFont(Font.TRUETYPE_FONT, is);
-            is = getClass().getResourceAsStream("/font/EightBitDragon-anqx.ttf");
+            InputStream is = getClass().getResourceAsStream("/font/EightBitDragon-anqx.ttf");
             eightBitDragon = Font.createFont(Font.TRUETYPE_FONT, is);
-            is = getClass().getResourceAsStream("/font/EndlessBossBattleRegular-v7Ey.ttf");
-            endlessBoss = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        
-        
         // Create heart object
         SuperObject heart = new OBJ_Heart(gp);
         heart_full = heart.image;
         heart_blank = heart.image2;
-        
-        
-        
-        
+
     }
-    
-    public void showMessage(String text){
+
+    public void showMessage(String text) {
         messageDamage = text;
         messageOn = true;
     }
-    
-    public void draw(Graphics2D g2){
-        
+
+    public void draw(Graphics2D g2) {
+
         this.g2 = g2;
-        g2.setFont(this.arial);  
+        g2.setFont(this.eightBitDragon);
         g2.setColor(Color.WHITE);
-        
+
         if (gp.gameState == gp.titleState) {
             drawTitleScreen();
         }
 
         // Play State
-        if(gp.gameState == gp.playState){
-           drawPlayerLife();
-           
-           
-            if(gameFinished == true){
-            
-            String text;
-            int textLength;
-            int x, y;
-            
-            text = "Can go to the exam";
-            textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth(); // return length of text
-            x = gp.screenWidth/2 - textLength/2;
-            y = gp.screenHeight/2 - (gp.tileSize * 3);
-            g2.drawString(text, x, y);
-            
-            
-            text = "Your time is : " + dFormat.format(playTime);
-            textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-            x = gp.screenWidth/2 - textLength/2;
-            y = gp.screenHeight/2 - (gp.tileSize * 4);
-            g2.drawString(text, x, y);
-            
-            
-            g2.setFont(this.arial);
-            g2.setColor(Color.ORANGE);
-            text = "Congratulations!";
-            textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth(); // return length of text
-            x = gp.screenWidth/2 - textLength/2;
-            y = gp.screenHeight/2 + (gp.tileSize * 3); // move text below three tiles.
-            g2.drawString(text, x, y);
-            
-            gp.gameThread = null;
-                 
-            
-        }
-        // game dosen't end
-        else{
+        if (gp.gameState == gp.playState) {
+            drawPlayerLife();
 
-            //Time
-//            playTime += (double)1/60;
-//            g2.drawString("Time : "+ dFormat.format(playTime), gp.tileSize*12, 50);
-            
-            // Message 
-            if(messageOn == true){
-                g2.setFont(this.eightBitDragon.deriveFont(20F)); // change font for messageDamage especially s
-                
-                int x = getXforCenteredText(messageDamage);
-                int y = gp.screenHeight/2;
-                
-                g2.drawString(messageDamage, x+35, y-24);
-                messageCounter++;
-                
-                // 2 seconds
-                if(messageCounter > 60){
-                    messageCounter = 0;
-                    messageOn = false;
+            if (gameFinished == true) {
+
+                String text;
+                int textLength;
+                int x, y;
+                g2.setColor(new Color(0, 0, 0, 180));
+                g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+                g2.setFont(this.eightBitDragon.deriveFont(30F));
+                text = "Can go to the exam";
+                g2.setColor(Color.white);
+                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth(); // return length of text
+                x = gp.screenWidth / 2 - textLength / 2;
+                y = gp.screenHeight / 2;
+                g2.drawString(text, x, y);
+
+                g2.setFont(this.eightBitDragon.deriveFont(30F));
+                text = "Your time is : " + dFormat.format(playTime);
+                g2.setColor(Color.white);
+                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+                x = gp.screenWidth / 2 - textLength / 2;
+                y = gp.screenHeight / 2 - (gp.tileSize * 3);
+                g2.drawString(text, x, y);
+
+                g2.setFont(this.eightBitDragon.deriveFont(30F));
+                text = "Your score is : " + dFormat.format(((90 - playTime) * 100) + (gp.player.life) * 100);
+                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+                x = gp.screenWidth / 2 - textLength / 2;
+                y = gp.screenHeight / 2 - (gp.tileSize * 2);
+                g2.drawString(text, x, y);
+
+                g2.setFont(this.eightBitDragon.deriveFont(45F));
+                g2.setColor(Color.ORANGE);
+                text = "Congratulations!";
+                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth(); // return length of text
+                x = gp.screenWidth / 2 - textLength / 2;
+                y = gp.screenHeight / 2 + (gp.tileSize * 2); // move text below three tiles.
+                g2.drawString(text, x, y);
+
+                g2.setFont(this.eightBitDragon.deriveFont(25F));
+                text = ">  Quit";
+                g2.setColor(Color.white);
+                x = getXforCenteredText(text);
+                y = gp.screenHeight / 2 + 200;
+                g2.drawString(text, x, y);
+
+//                gp.gameThread = null;
+            } // game dosen't end
+            else {
+
+                //Time
+                playTime += (double) 1 / 60;
+                if (playTime > 90) {
+                    gp.gameState = gp.gameOverState;
+                } else {
+                    g2.setFont(this.eightBitDragon.deriveFont(23F));
+                    g2.drawString("Time : " + dFormat.format(90 - playTime), gp.tileSize * 12, 50);
+
+                    // Message 
+                    if (messageOn == true) {
+                        g2.setFont(this.eightBitDragon.deriveFont(20F)); // change font for messageDamage especially s
+
+                        int x = getXforCenteredText(messageDamage);
+                        int y = gp.screenHeight / 2;
+
+                        g2.drawString(messageDamage, x + 35, y - 24);
+                        messageCounter++;
+
+                        // 2 seconds
+                        if (messageCounter > 60) {
+                            messageCounter = 0;
+                            messageOn = false;
+                        }
+                    }
                 }
             }
         }
-           
-        }
-        
-        
+
         // Pause State
-        if(gp.gameState == gp.pauseState){
+        if (gp.gameState == gp.pauseState) {
             drawPlayerLife();
             drawPauseScreen();
         }
         // Game over
-        if (gp.gameState == gp.gameOverState){
+        if (gp.gameState == gp.gameOverState) {
             drawGameOverScreen();
         }
-        
-        
+
 //       
     }
-    
-     public void drawTitleScreen() {
+
+    public void drawTitleScreen() {
         g2.setColor(new Color(70, 120, 80));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
@@ -192,63 +196,60 @@ public class UI {
 
     }
 
-    
-    
     // heart
-    public void drawPlayerLife(){
-        int x = gp.tileSize/2;
-        int y = gp.tileSize/2;
+    public void drawPlayerLife() {
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
         int i = 0;
-        
-        
+
         // draw blank heart
-        while(i< gp.player.maxLife){
-            g2.drawImage(heart_blank,x,y,null);
+        while (i < gp.player.maxLife) {
+            g2.drawImage(heart_blank, x, y, null);
             i++;
             x += gp.tileSize;
         }
-        
+
         // reset
-        x = gp.tileSize/2;
-        y = gp.tileSize/2;
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
         i = 0;
-        
+
         // draw current life
-        while(i < gp.player.life){
+        while (i < gp.player.life) {
             g2.drawImage(heart_full, x, y, null);
             i++;
             x += gp.tileSize;
         }
-        
-        if(gp.player.life == 0){
+
+        if (gp.player.life == 0) {
 //            gp.ui.gameFinished = true;
         }
-        
+
     }
-    
+
     // screen that pause time
-    public void drawPauseScreen(){
-        g2.setColor(new Color(0,0,0, 180));
+    public void drawPauseScreen() {
+        g2.setColor(new Color(0, 0, 0, 180));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
         g2.setColor(Color.white);
         g2.setFont(this.eightBitDragon.deriveFont(45F)); // change font for messageDamage especially 
         String text = "Pause";
         int x = getXforCenteredText(text);
-        int y = gp.screenHeight/2;
+        int y = gp.screenHeight / 2;
         g2.drawString(text, x, y);
     }
-    
-    public int getXforCenteredText(String text){
-        int textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth/2 - textLength/2;
+
+    public int getXforCenteredText(String text) {
+        int textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gp.screenWidth / 2 - textLength / 2;
         return x;
     }
-    
-    public void drawGameOverScreen(){
-        
-        g2.setColor(new Color(0,0,0, 180));
+
+    public void drawGameOverScreen() {
+
+        g2.setColor(new Color(0, 0, 0, 180));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-        
+
         int x;
         int y;
         String text;
@@ -257,31 +258,43 @@ public class UI {
         // shadow
         g2.setColor(Color.black);
         x = getXforCenteredText(text);
-        y = gp.tileSize*4;
+        y = gp.tileSize * 4;
         g2.drawString(text, x, y);
         // main
         g2.setColor(Color.white);
-        g2.drawString(text, x, y-4);
-        
+        g2.drawString(text, x, y - 4);
+        // why u game over
+        g2.setFont(this.eightBitDragon.deriveFont(Font.BOLD, 32f));
+        if (gp.player.life <= 0) {
+            text = "Unfortunately, you died. RIP";
+
+        } else {
+            text = "Too bad, you're late";
+        }
+        x = getXforCenteredText(text);
+        y += gp.tileSize * 2;
+        g2.drawString(text, x, y);
+
+        playTime = 0;
+
         // retry
         g2.setFont(this.eightBitDragon.deriveFont(30f));
         text = "Retry";
         x = getXforCenteredText(text);
-        y += gp.tileSize*4;
+        y += gp.tileSize * 3;
         g2.drawString(text, x, y);
-        if (commandNum == 0){
-            g2.drawString(">", x - gp.tileSize , y);
+        if (commandNum == 0) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
-        
+
         // back to title screen
         text = "Quit";
         x = getXforCenteredText(text);
         y += 55;
         g2.drawString(text, x, y);
-        if (commandNum == 1){
-            g2.drawString(">", x - gp.tileSize , y);
+        if (commandNum == 1) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
     }
-    
-    
+
 }

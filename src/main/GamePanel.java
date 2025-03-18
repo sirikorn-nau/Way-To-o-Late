@@ -48,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Entity and Object
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[4000];
-    public Entity npc[] = new Entity[100];
+    public Entity npc[] = new Entity[200];
 
     public Entity monster[] = new Entity[30];
     ArrayList<Entity> entityList = new ArrayList<Entity>();
@@ -83,16 +83,17 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void retry() {
+
         player.setDefaultPositions();
         player.restoreLife();
         aSetter.setNPC();
         aSetter.setObject();
-//        aSetter.setMonster();
+
     }
 
     public void restart() {
         
-        player.setDefaultValues();
+
         player.setDefaultPositions();
         player.restoreLife();
         aSetter.setNPC();
@@ -103,7 +104,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-//        playMusic(0);
+
 
     }
 
@@ -142,7 +143,6 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == playState) {
 
             player.update(); // player
-            
             for (int i = 0; i < npc.length; i++) { // NPC_CAt
                 if (npc[i] != null) {
                     npc[i].upDate();
@@ -175,34 +175,24 @@ public class GamePanel extends JPanel implements Runnable {
         } else {
             tileM.draw(g2);
 
+            
             // object
             for (int i = 0; i < obj.length; i++) {
                 if (obj[i] != null) {
                     obj[i].draw(g2, this);
                 }
-
-            }
-
-            // Dog
-            for (int i = 0; i < monster.length; i++) {
-                if (monster[i] != null) {
-                    monster[i].draw(g2);
-                }
-            }
-            
-
-           
-            
-            // Cat, car
+            }    
+            // NFC 
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
                     npc[i].draw(g2);
                 }
-            }
+            }    
+                
+
             
-             // player
+            // player
             player.draw(g2);
-            
 
             // UI
             ui.draw(g2);
@@ -227,7 +217,5 @@ public class GamePanel extends JPanel implements Runnable {
         se.setFile(i);
         se.play();
     }
-    
-    
 
 }

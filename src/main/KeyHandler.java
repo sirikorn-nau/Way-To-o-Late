@@ -21,9 +21,9 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        
-         if (gp.gameState == gp.titleState) {
-            
+
+        if (gp.gameState == gp.titleState) {
+
             if (code == KeyEvent.VK_W | code == KeyEvent.VK_UP) {
                 gp.ui.commandNum--;
                 if (gp.ui.commandNum < 0) {
@@ -41,61 +41,70 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.playState;
                     gp.playMusic(0);
                 }
-                if(gp.ui.commandNum == 1){
-                     System.exit(0);
+                if (gp.ui.commandNum == 1) {
+                    System.exit(0);
                 }
-           
+
             }
         }
 
-
-        if (code == KeyEvent.VK_W | code == KeyEvent.VK_UP) {
-            upPressed = true;
-        }
-        if (code == KeyEvent.VK_S | code == KeyEvent.VK_DOWN) {
-            downPressed = true;
-        }
-        if (code == KeyEvent.VK_A | code == KeyEvent.VK_LEFT) {
-            leftPressed = true;
-        }
-        if (code == KeyEvent.VK_D | code == KeyEvent.VK_RIGHT) {
-            rightPressed = true;
-        }
-        if (code == KeyEvent.VK_P) {
-            if (gp.gameState == gp.playState) {
-                gp.gameState = gp.pauseState;
-            } else if (gp.gameState == gp.pauseState) {
-                gp.gameState = gp.playState;
+        if (gp.gameState == gp.playState) {
+            if (gp.ui.gameFinished == true) {
+                if (code == KeyEvent.VK_ENTER) {
+                        System.exit(0);
+                    
+                }
             }
         }
-        if (gp.gameState == gp.gameOverState) {
+
             if (code == KeyEvent.VK_W | code == KeyEvent.VK_UP) {
-                gp.ui.commandNum--;
-                if (gp.ui.commandNum < 0) {
-                    gp.ui.commandNum = 1;
-                }
+                upPressed = true;
             }
             if (code == KeyEvent.VK_S | code == KeyEvent.VK_DOWN) {
-                gp.ui.commandNum++;
-                if (gp.ui.commandNum > 1) {
-                    gp.ui.commandNum = 0;
-                }
-
+                downPressed = true;
             }
-            
-            if (code == KeyEvent.VK_ENTER) {
-                if (gp.ui.commandNum == 0) {
+            if (code == KeyEvent.VK_A | code == KeyEvent.VK_LEFT) {
+                leftPressed = true;
+            }
+            if (code == KeyEvent.VK_D | code == KeyEvent.VK_RIGHT) {
+                rightPressed = true;
+            }
+            if (code == KeyEvent.VK_P) {
+                if (gp.gameState == gp.playState) {
+                    gp.gameState = gp.pauseState;
+                } else if (gp.gameState == gp.pauseState) {
                     gp.gameState = gp.playState;
-                    gp.retry();
-                }
-               if (gp.ui.commandNum == 1) {
-                    gp.gameState = gp.titleState;
-                    gp.stopMusic();
-                    gp.restart();
                 }
             }
-        }
+            if (gp.gameState == gp.gameOverState) {
+                if (code == KeyEvent.VK_W | code == KeyEvent.VK_UP) {
+                    gp.ui.commandNum--;
+                    if (gp.ui.commandNum < 0) {
+                        gp.ui.commandNum = 1;
+                    }
+                }
+                if (code == KeyEvent.VK_S | code == KeyEvent.VK_DOWN) {
+                    gp.ui.commandNum++;
+                    if (gp.ui.commandNum > 1) {
+                        gp.ui.commandNum = 0;
+                    }
 
+                }
+
+                if (code == KeyEvent.VK_ENTER) {
+                    if (gp.ui.commandNum == 0) {
+                        gp.gameState = gp.playState;
+                        gp.retry();
+                    }
+                    if (gp.ui.commandNum == 1) {
+                        gp.gameState = gp.titleState;
+                        gp.stopMusic();
+                        gp.restart();
+                    }
+                }
+            }
+
+        
     }
 
     @Override
@@ -115,7 +124,7 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_D | code == KeyEvent.VK_RIGHT) {
             rightPressed = false;
-            
+
         }
 
     }

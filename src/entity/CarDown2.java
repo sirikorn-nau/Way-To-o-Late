@@ -11,17 +11,16 @@ public class CarDown2 extends Entity {
         direction = "down";
         speed = 2;
         getImage();
+        collisionOn = false;
         type = 3;
 
     }
 
     public void getImage() {
-//        red = setUp("/npc/56");
-        up1 = setUp("/npc/up1");
-        up2 = setUp("/npc/up1");
-        down1 = setUp("/npc/down2");
-        down2 = setUp("/npc/down2");
-
+        up1 = setUp("/npc/up2");
+        up2 = setUp("/npc/up2");
+        down1 = setUp("/npc/down1");
+        down2 = setUp("/npc/down1");
     }
 
     @Override
@@ -29,18 +28,28 @@ public class CarDown2 extends Entity {
         // set cat behavior
 
         actionLockCounter++;
-
-        if (actionLockCounter < 120) {
-            direction = "down";
-        } else if (actionLockCounter >= 120 && actionLockCounter < 240) {
+        
+        if (actionLockCounter == 2350) {
+            if (direction.equals("up")) {
+                direction = "left";
+            } else {
+                direction = "right";
+            }
+        }
+        if (actionLockCounter == 2400) {
             // direction won't change for the next 120 seconds
 //            Random random = new Random();
 //            int i = random.nextInt(100)+1; // pick up num from 1-100
-            direction = "up";
+            if (direction.equals("right")) {
+                direction = "up";
+            } else {
+                direction = "down";
+            }
 
-        } else if (actionLockCounter == 240) {
             actionLockCounter = 0;
+
         }
+
     }
 
 }

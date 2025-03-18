@@ -14,7 +14,7 @@ public class OBJ_Eunji extends SuperObject {
         
         name = "Eunji";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/118.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/Eunji.png"));
             uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         }catch(IOException e){
             e.printStackTrace();
@@ -24,4 +24,6 @@ public class OBJ_Eunji extends SuperObject {
         
         
     }
+
+    
 }

@@ -6,11 +6,10 @@ public class NPC_Cat extends Entity{
     
     public NPC_Cat(GamePanel gp){
         super(gp);
-        
+        type = 2;
         direction = "down";
         speed = 1;
         getImage();
-        type = 2;
         
     }
     public void getImage() {

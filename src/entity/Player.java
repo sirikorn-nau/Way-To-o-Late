@@ -23,7 +23,7 @@ public class Player extends Entity {
 
         super(gp);  // call constructor of superclass by passing this gp
         this.keyH = keyH;
-        type = 1;
+
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
@@ -39,19 +39,16 @@ public class Player extends Entity {
         getPlayerImage();
 
     }
-    
-  
 
     public void setDefaultValues() {
 
-        // ตำแหน่งที่เกิดบน map จ้า 
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 10;
-        speed = 15;
+        speed = 3;
         direction = "down";
 
         // Player status
-        maxLife = 15;
+        maxLife = 5;
         life = maxLife;
 
     }
@@ -74,20 +71,20 @@ public class Player extends Entity {
         right3 = setUp("/player/boyright3");
         right4 = setUp("/player/boyright4");
     }
-    
-      public void setDefaultPositions(){
-          
+
+    public void setDefaultPositions() {
+
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 10;
         direction = "down";
-        
+
     }
-      
-      public void restoreLife(){
-          
-           life = maxLife;
-           invincible = false;
-      }
+
+    public void restoreLife() {
+
+        life = maxLife;
+        invincible = false;
+    }
 
     public void update() {
 
@@ -103,8 +100,8 @@ public class Player extends Entity {
                 direction = "right";
             }
 
-            collisionOn = false;
             // Check Tile collision
+            collisionOn = false;
             gp.cChecker.checkTile(this);
 
             // Check Object collision
@@ -117,10 +114,6 @@ public class Player extends Entity {
             // check NPC collision
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
-
-            // check monster collision
-//            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-//            contactMonster(monsterIndex);
 
             // if collision is false , player can move
             if (collisionOn == false) {
@@ -157,16 +150,15 @@ public class Player extends Entity {
             }
 
         }
-        
-        
-        if(invincible == true){
+
+        if (invincible == true) {
             invincibleCounter++;
-            if(invincibleCounter > 60){
+            if (invincibleCounter > 60) {
                 invincible = false;
                 invincibleCounter = 0;
             }
         }
-        if (life <= 0){
+        if (life <= 0) {
             gp.gameState = gp.gameOverState;
         }
 
@@ -181,21 +173,22 @@ public class Player extends Entity {
                 case "Eunji":
                     gp.obj[i] = null; // it will be delete object , if we step Eunji
                     //gp.playSE(3);
-                    gp.ui.showMessage("-1");
+                    gp.ui.showMessage("hp: -1");
                     gp.player.life -= 1;
                     break;
                 case "Egg":
-                    if (gp.player.life < 5){
-                         gp.player.life += 1;
+                    if (gp.player.life < 5) {
+                        gp.player.life += 1;
                     }
-                    
+                    gp.ui.showMessage("hp: +1");
                     gp.obj[i] = null;
                     // gp.playSE(3);
                     break;
                 case "end":
-                    gp.stopMusic();
                     gp.ui.gameFinished = true;
-                    //gp.playSE();
+                    gp.stopMusic();
+                    gp.playSE(1);
+   
                     break;
                 case "walk":
                     break;
@@ -285,52 +278,34 @@ public class Player extends Entity {
                 break;
 
         }
-        
+
         // set opacity of player 
-        if(invincible == true){
+        if (invincible == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f)); // opacity 70 %
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-        
+
         // reset opacity 100%
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        
+
     }
 
     public void interactNPC(int i) {
-         // if collision didn't happen it return 999 , checkEntity in CollisionChecker
-         
         if (i != 999) {
-            if(gp.npc[i].type != 3){
-                // cat
+            if (gp.npc[i].type != 3) {
+                // npc 
                 if (invincible == false) {
-                life -= 1;
-                gp.ui.showMessage("nom");;
-                invincible = true;
-            }
-                
-            }
-            else{
-                gp.ui.showMessage(gp.npc[i].type+"");;
+                    life -= 1;
+                    gp.ui.showMessage("nom");
+                    invincible = true;
+                }
+            } else {
+                // car
                 life = 0;
             }
-            
-//            System.out.println("interactNPC");
         }
-        
-        // set opacity of player 
-       
-        
-    }
 
-    public void contactMonster(int i) {
-        if (i != 999) {
-            if (invincible == false) {
-                life -= 1;
-                invincible = true;
-            }
-        }
     }
 
 }

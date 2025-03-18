@@ -46,7 +46,6 @@ public class Entity {
     public int invincibleCounter = 0;
     public int type; // 0 = player, 1 = npc, 2 = monster
     
-    
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
@@ -57,26 +56,14 @@ public class Entity {
       // work identically in all npc  
        setAction();
         collisionOn = false;
+        // 
         if(type != 3){
-
             gp.cChecker.checkTile(this);
             gp.cChecker.checkObject(this, false);
-
+//            gp.cChecker.checkPlayer(this);
             gp.cChecker.checkEntity(this, gp.npc);
-            gp.cChecker.checkEntity(this, gp.monster);
         }
-        
-        
-        // monster attacking player
-//        if(this.type == 2 && contactPlayer == true){
-//             if(gp.player.invincible == false){
-//                 // we can give damage if invincible equals false
-//                 gp.player.life -= 1;
-//                 gp.player.invincible = true;
-//             }
-//        }
-      
-      // If collision is false , player can move;
+        // If collision is false , player can move;
         if(collisionOn == false && type != 3){
             switch(direction){
                 case "up":
@@ -86,21 +73,27 @@ public class Entity {
                 case "left":
                     worldX -= speed; break;
                 case "right":
-                    worldX += speed; break;   
+                    worldX += speed; break;
             }
         }
-        
-        
-        
-        else if(collisionOn == false && type == 3){
-            switch(direction){
+        if(collisionOn == false && type == 3){
+
+            switch (direction) {
                 case "up":
-                    worldY -= speed; break;
+                    worldY -= speed;
+                    break;
                 case "down":
-                    worldY += speed; break;
+                    worldY += speed;
+                    break;
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
             }
         }
-        
+   
         spriteCounter++;
 
         if (spriteCounter > 12) {
@@ -171,7 +164,7 @@ public class Entity {
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch (IOException e) {
-            System.out.println("Entity class");
+//            System.out.println("Entity class");
             e.printStackTrace();
 
         }

@@ -5,8 +5,8 @@ import entity.CarDown2;
 import entity.CarUp1;
 import entity.CarUp2;
 import entity.NPC_Cat;
+import entity.NPC_Chicken;
 import java.security.PublicKey;
-import monster.MON_Dog;
 
 import object.OBJ_10;
 import object.OBJ_103;
@@ -105,274 +105,234 @@ public class AssetSetter {
         this.gp = gp;
 
     }
-    
-    
-    public void setNPC(){
+
+    public void setNPC() {
         
         gp.npc[0] = new CarDown1(gp);
-        gp.npc[0].worldX = gp.tileSize * 18;
-        gp.npc[0].worldY = gp.tileSize * 3;
+        gp.npc[0].worldX = gp.tileSize * 16;
+        gp.npc[0].worldY = gp.tileSize * -1;
         
         gp.npc[1] = new CarDown2(gp);
-        gp.npc[1].worldX = gp.tileSize * 18;
-        gp.npc[1].worldY = gp.tileSize * 4;
+        gp.npc[1].worldX = gp.tileSize * 16;
+        gp.npc[1].worldY = gp.tileSize * -2;
         
+        gp.npc[2] = new CarDown1(gp);
+        gp.npc[2].worldX = gp.tileSize * 15;
+        gp.npc[2].worldY = gp.tileSize * -4;
         
-
+        gp.npc[3] = new CarDown2(gp);
+        gp.npc[3].worldX = gp.tileSize * 15;
+        gp.npc[3].worldY = gp.tileSize * -5;
         
+        gp.npc[4] = new CarDown1(gp);
+        gp.npc[4].worldX = gp.tileSize * 16;
+        gp.npc[4].worldY = gp.tileSize * -5;
         
-//        
-//        gp.npc[2] = new CarDown1(gp);
-//        gp.npc[2].worldX = gp.tileSize * 15;
-//        gp.npc[2].worldY = gp.tileSize * -4;
-//        
-//        gp.npc[3] = new CarDown2(gp);
-//        gp.npc[3].worldX = gp.tileSize * 15;
-//        gp.npc[3].worldY = gp.tileSize * -5;
-//        
-//        gp.npc[4] = new CarDown1(gp);
-//        gp.npc[4].worldX = gp.tileSize * 16;
-//        gp.npc[4].worldY = gp.tileSize * -5;
-//        
-//        gp.npc[5] = new CarDown2(gp);
-//        gp.npc[5].worldX = gp.tileSize * 16;
-//        gp.npc[5].worldY = gp.tileSize * -6;
-//        
-//        gp.npc[6] = new CarDown1(gp);
-//        gp.npc[6].worldX = gp.tileSize * 16;
-//        gp.npc[6].worldY = gp.tileSize * -7;
-//        
-//        gp.npc[7] = new CarDown2(gp);
-//        gp.npc[7].worldX = gp.tileSize * 16;
-//        gp.npc[7].worldY = gp.tileSize * -8;
-//        
-//        gp.npc[8] = new CarDown1(gp);
-//        gp.npc[8].worldX = gp.tileSize * 15;
-//        gp.npc[8].worldY = gp.tileSize * -8;
-//        
-//        gp.npc[9] = new CarDown2(gp);
-//        gp.npc[9].worldX = gp.tileSize * 15;
-//        gp.npc[9].worldY = gp.tileSize * -9;
-//
-//        gp.npc[10] = new CarDown1(gp);
-//        gp.npc[10].worldX = gp.tileSize * 16;
-//        gp.npc[10].worldY = gp.tileSize * -11;
-//        
-//        gp.npc[11] = new CarDown2(gp);
-//        gp.npc[11].worldX = gp.tileSize * 16;
-//        gp.npc[11].worldY = gp.tileSize * -12;
-//        
-//        gp.npc[12] = new CarDown1(gp);
-//        gp.npc[12].worldX = gp.tileSize * 15;
-//        gp.npc[12].worldY = gp.tileSize * -14;
-//        
-//        gp.npc[13] = new CarDown2(gp);
-//        gp.npc[13].worldX = gp.tileSize * 15;
-//        gp.npc[13].worldY = gp.tileSize * -15;
-//        
-//        gp.npc[14] = new CarDown1(gp);
-//        gp.npc[14].worldX = gp.tileSize * 16;
-//        gp.npc[14].worldY = gp.tileSize * -15;
-//        
-//        gp.npc[15] = new CarDown2(gp);
-//        gp.npc[15].worldX = gp.tileSize * 16;
-//        gp.npc[15].worldY = gp.tileSize * -16;
-//        
-//        gp.npc[16] = new CarUp1(gp);
-//        gp.npc[16].worldX = gp.tileSize * 18;
-//        gp.npc[16].worldY = gp.tileSize * 61;
-//        
-//        gp.npc[17] = new CarUp2(gp);
-//        gp.npc[17].worldX = gp.tileSize * 18;
-//        gp.npc[17].worldY = gp.tileSize * 60;
-//        
-//        gp.npc[18] = new CarUp1(gp);
-//        gp.npc[18].worldX = gp.tileSize * 18;
-//        gp.npc[18].worldY = gp.tileSize * 64;
-//        
-//        gp.npc[19] = new CarUp2(gp);
-//        gp.npc[19].worldX = gp.tileSize * 18;
-//        gp.npc[19].worldY = gp.tileSize * 63;
-//        
-//        gp.npc[20] = new CarUp1(gp);
-//        gp.npc[20].worldX = gp.tileSize * 17;
-//        gp.npc[20].worldY = gp.tileSize * 67;
-//        
-//        gp.npc[21] = new CarUp2(gp);
-//        gp.npc[21].worldX = gp.tileSize * 17;
-//        gp.npc[21].worldY = gp.tileSize * 66;
-//        
-//        gp.npc[22] = new CarUp1(gp);
-//        gp.npc[22].worldX = gp.tileSize * 18;
-//        gp.npc[22].worldY = gp.tileSize * 72;
-//        
-//        gp.npc[23] = new CarUp2(gp);
-//        gp.npc[23].worldX = gp.tileSize * 18;
-//        gp.npc[23].worldY = gp.tileSize * 71;
-//        
-//        gp.npc[24] = new CarUp1(gp);
-//        gp.npc[24].worldX = gp.tileSize * 18;
-//        gp.npc[24].worldY = gp.tileSize * 69;
-//        
-//        gp.npc[25] = new CarUp2(gp);
-//        gp.npc[25].worldX = gp.tileSize * 18;
-//        gp.npc[25].worldY = gp.tileSize * 68;
-//        
-//        gp.npc[26] = new CarUp1(gp);
-//        gp.npc[26].worldX = gp.tileSize * 17;
-//        gp.npc[26].worldY = gp.tileSize * 73;
-//        
-//        gp.npc[27] = new CarUp2(gp);
-//        gp.npc[27].worldX = gp.tileSize * 17;
-//        gp.npc[27].worldY = gp.tileSize * 72;
-//        
-//        gp.npc[28] = new CarUp1(gp);
-//        gp.npc[28].worldX = gp.tileSize * 17;
-//        gp.npc[28].worldY = gp.tileSize * 62;
-//        
-//        gp.npc[29] = new CarUp2(gp);
-//        gp.npc[29].worldX = gp.tileSize * 17;
-//        gp.npc[29].worldY = gp.tileSize * 61;
-//        
-//        gp.npc[30] = new CarDown1(gp);
-//        gp.npc[30].worldX = gp.tileSize * 15;
-//        gp.npc[30].worldY = gp.tileSize * -28;
-//        
-//        gp.npc[31] = new CarDown2(gp);
-//        gp.npc[31].worldX = gp.tileSize * 15;
-//        gp.npc[31].worldY = gp.tileSize * -29;
-//        
-//        gp.npc[35] = new CarDown1(gp);
-//        gp.npc[35].worldX = gp.tileSize * 15;
-//        gp.npc[35].worldY = gp.tileSize * -39;
-//        
-//        gp.npc[33] = new CarDown2(gp);
-//        gp.npc[33].worldX = gp.tileSize * 15;
-//        gp.npc[33].worldY = gp.tileSize * -40;
-//        
-//        gp.npc[34] = new CarDown1(gp);
-//        gp.npc[34].worldX = gp.tileSize * 16;
-//        gp.npc[34].worldY = gp.tileSize * -27;
-//        
-//        gp.npc[35] = new CarDown2(gp);
-//        gp.npc[35].worldX = gp.tileSize * 16;
-//        gp.npc[35].worldY = gp.tileSize * -28;
-//        
-//        gp.npc[36] = new CarDown1(gp);
-//        gp.npc[36].worldX = gp.tileSize * 16;
-//        gp.npc[36].worldY = gp.tileSize * -17;
-//        
-//        gp.npc[37] = new CarDown2(gp);
-//        gp.npc[37].worldX = gp.tileSize * 16;
-//        gp.npc[37].worldY = gp.tileSize * -18;
-//        
-//        gp.npc[38] = new CarDown1(gp);
-//        gp.npc[38].worldX = gp.tileSize * 15;
-//        gp.npc[38].worldY = gp.tileSize * -38;
-//        
-//        gp.npc[39] = new CarDown2(gp);
-//        gp.npc[39].worldX = gp.tileSize * 15;
-//        gp.npc[39].worldY = gp.tileSize * -39;
-//
-//        gp.npc[40] = new CarDown1(gp);
-//        gp.npc[40].worldX = gp.tileSize * 16;
-//        gp.npc[40].worldY = gp.tileSize * -21;
-//        
-//        gp.npc[41] = new CarDown2(gp);
-//        gp.npc[41].worldX = gp.tileSize * 16;
-//        gp.npc[41].worldY = gp.tileSize * -22;
-//        
-//        gp.npc[42] = new CarDown1(gp);
-//        gp.npc[42].worldX = gp.tileSize * 15;
-//        gp.npc[42].worldY = gp.tileSize * -34;
-//        
-//        gp.npc[43] = new CarDown2(gp);
-//        gp.npc[43].worldX = gp.tileSize * 15;
-//        gp.npc[43].worldY = gp.tileSize * -35;
-//        
-//        gp.npc[44] = new CarDown1(gp);
-//        gp.npc[44].worldX = gp.tileSize * 16;
-//        gp.npc[44].worldY = gp.tileSize * -25;
-//        
-//        gp.npc[45] = new CarDown2(gp);
-//        gp.npc[45].worldX = gp.tileSize * 16;
-//        gp.npc[45].worldY = gp.tileSize * -26;
-//        
-//        gp.npc[46] = new CarUp1(gp);
-//        gp.npc[46].worldX = gp.tileSize * 18;
-//        gp.npc[46].worldY = gp.tileSize * 81;
-//        
-//        gp.npc[47] = new CarUp2(gp);
-//        gp.npc[47].worldX = gp.tileSize * 18;
-//        gp.npc[47].worldY = gp.tileSize * 80;
-//        
-//        gp.npc[48] = new CarUp1(gp);
-//        gp.npc[48].worldX = gp.tileSize * 18;
-//        gp.npc[48].worldY = gp.tileSize * 94;
-//        
-//        gp.npc[49] = new CarUp2(gp);
-//        gp.npc[49].worldX = gp.tileSize * 18;
-//        gp.npc[49].worldY = gp.tileSize * 93;
-//        
-//        gp.npc[50] = new CarUp1(gp);
-//        gp.npc[50].worldX = gp.tileSize * 17;
-//        gp.npc[50].worldY = gp.tileSize * 97;
-//        
-//        gp.npc[51] = new CarUp2(gp);
-//        gp.npc[51].worldX = gp.tileSize * 17;
-//        gp.npc[51].worldY = gp.tileSize * 96;
-//        
-//        gp.npc[52] = new CarUp1(gp);
-//        gp.npc[52].worldX = gp.tileSize * 18;
-//        gp.npc[52].worldY = gp.tileSize * 78;
-//        
-//        gp.npc[53] = new CarUp2(gp);
-//        gp.npc[53].worldX = gp.tileSize * 18;
-//        gp.npc[53].worldY = gp.tileSize * 77;
-//        
-//        gp.npc[54] = new CarUp1(gp);
-//        gp.npc[54].worldX = gp.tileSize * 18;
-//        gp.npc[54].worldY = gp.tileSize * 86;
-//        
-//        gp.npc[55] = new CarUp2(gp);
-//        gp.npc[55].worldX = gp.tileSize * 18;
-//        gp.npc[55].worldY = gp.tileSize * 85;
-//        
-//        gp.npc[56] = new CarUp1(gp);
-//        gp.npc[56].worldX = gp.tileSize * 17;
-//        gp.npc[56].worldY = gp.tileSize * 83;
-//        
-//        gp.npc[57] = new CarUp2(gp);
-//        gp.npc[57].worldX = gp.tileSize * 17;
-//        gp.npc[57].worldY = gp.tileSize * 82;
-//        
-//        gp.npc[58] = new CarUp1(gp);
-//        gp.npc[58].worldX = gp.tileSize * 17;
-//        gp.npc[58].worldY = gp.tileSize * 92;
-//        
-//        gp.npc[59] = new CarUp2(gp);
-//        gp.npc[59].worldX = gp.tileSize * 17;
-//        gp.npc[59].worldY = gp.tileSize * 91;
-//        
-//        gp.npc[60] = new NPC_Cat(gp);
-//        gp.npc[60].worldX = gp.tileSize * 14;
-//        gp.npc[60].worldY = gp.tileSize * 15;
-//        
-
+        gp.npc[5] = new CarDown2(gp);
+        gp.npc[5].worldX = gp.tileSize * 16;
+        gp.npc[5].worldY = gp.tileSize * -6;
         
-
-
-
-// CAT!
-               gp.npc[61] = new NPC_Cat(gp);
-        gp.npc[61].worldX = gp.tileSize * 13;
-        gp.npc[61].worldY = gp.tileSize * 10;
-
+        gp.npc[6] = new CarDown1(gp);
+        gp.npc[6].worldX = gp.tileSize * 16;
+        gp.npc[6].worldY = gp.tileSize * -7;
         
+        gp.npc[7] = new CarDown2(gp);
+        gp.npc[7].worldX = gp.tileSize * 16;
+        gp.npc[7].worldY = gp.tileSize * -8;
+        
+        gp.npc[8] = new CarDown1(gp);
+        gp.npc[8].worldX = gp.tileSize * 15;
+        gp.npc[8].worldY = gp.tileSize * -8;
+        
+        gp.npc[9] = new CarDown2(gp);
+        gp.npc[9].worldX = gp.tileSize * 15;
+        gp.npc[9].worldY = gp.tileSize * -9;
+
+        gp.npc[10] = new CarDown1(gp);
+        gp.npc[10].worldX = gp.tileSize * 16;
+        gp.npc[10].worldY = gp.tileSize * -11;
+        
+        gp.npc[11] = new CarDown2(gp);
+        gp.npc[11].worldX = gp.tileSize * 16;
+        gp.npc[11].worldY = gp.tileSize * -12;
+        
+        gp.npc[12] = new CarDown1(gp);
+        gp.npc[12].worldX = gp.tileSize * 15;
+        gp.npc[12].worldY = gp.tileSize * -14;
+        
+        gp.npc[13] = new CarDown2(gp);
+        gp.npc[13].worldX = gp.tileSize * 15;
+        gp.npc[13].worldY = gp.tileSize * -15;
+        
+        gp.npc[14] = new CarDown1(gp);
+        gp.npc[14].worldX = gp.tileSize * 16;
+        gp.npc[14].worldY = gp.tileSize * -15;
+        
+        gp.npc[15] = new CarDown2(gp);
+        gp.npc[15].worldX = gp.tileSize * 16;
+        gp.npc[15].worldY = gp.tileSize * -16;
+        
+      
+        
+        gp.npc[30] = new CarDown1(gp);
+        gp.npc[30].worldX = gp.tileSize * 15;
+        gp.npc[30].worldY = gp.tileSize * -28;
+        
+        gp.npc[31] = new CarDown2(gp);
+        gp.npc[31].worldX = gp.tileSize * 15;
+        gp.npc[31].worldY = gp.tileSize * -29;
+        
+        gp.npc[32] = new CarDown1(gp);
+        gp.npc[32].worldX = gp.tileSize * 15;
+        gp.npc[32].worldY = gp.tileSize * -40;
+        
+        gp.npc[33] = new CarDown2(gp);
+        gp.npc[33].worldX = gp.tileSize * 15;
+        gp.npc[33].worldY = gp.tileSize * -41;
+        
+        gp.npc[34] = new CarDown1(gp);
+        gp.npc[34].worldX = gp.tileSize * 16;
+        gp.npc[34].worldY = gp.tileSize * -27;
+        
+        gp.npc[35] = new CarDown2(gp);
+        gp.npc[35].worldX = gp.tileSize * 16;
+        gp.npc[35].worldY = gp.tileSize * -28;
+        
+        gp.npc[36] = new CarDown1(gp);
+        gp.npc[36].worldX = gp.tileSize * 16;
+        gp.npc[36].worldY = gp.tileSize * -17;
+        
+        gp.npc[37] = new CarDown2(gp);
+        gp.npc[37].worldX = gp.tileSize * 16;
+        gp.npc[37].worldY = gp.tileSize * -18;
+        
+        gp.npc[38] = new CarDown1(gp);
+        gp.npc[38].worldX = gp.tileSize * 15;
+        gp.npc[38].worldY = gp.tileSize * -38;
+        
+        gp.npc[39] = new CarDown2(gp);
+        gp.npc[39].worldX = gp.tileSize * 15;
+        gp.npc[39].worldY = gp.tileSize * -39;
+
+        gp.npc[40] = new CarDown1(gp);
+        gp.npc[40].worldX = gp.tileSize * 16;
+        gp.npc[40].worldY = gp.tileSize * -21;
+        
+        gp.npc[41] = new CarDown2(gp);
+        gp.npc[41].worldX = gp.tileSize * 16;
+        gp.npc[41].worldY = gp.tileSize * -22;
+        
+        gp.npc[42] = new CarDown1(gp);
+        gp.npc[42].worldX = gp.tileSize * 15;
+        gp.npc[42].worldY = gp.tileSize * -34;
+        
+        gp.npc[43] = new CarDown2(gp);
+        gp.npc[43].worldX = gp.tileSize * 15;
+        gp.npc[43].worldY = gp.tileSize * -35;
+        
+        gp.npc[44] = new CarDown1(gp);
+        gp.npc[44].worldX = gp.tileSize * 16;
+        gp.npc[44].worldY = gp.tileSize * -25;
+        
+        gp.npc[45] = new CarDown2(gp);
+        gp.npc[45].worldX = gp.tileSize * 16;
+        gp.npc[45].worldY = gp.tileSize * -26;
+        
+        gp.npc[46] = new CarUp1(gp);
+        gp.npc[46].worldX = gp.tileSize * 18;
+        gp.npc[46].worldY = gp.tileSize * 81;
+        
+        gp.npc[47] = new CarUp2(gp);
+        gp.npc[47].worldX = gp.tileSize * 18;
+        gp.npc[47].worldY = gp.tileSize * 80;
+        
+        gp.npc[48] = new CarUp1(gp);
+        gp.npc[48].worldX = gp.tileSize * 18;
+        gp.npc[48].worldY = gp.tileSize * 94;
+        
+        gp.npc[49] = new CarUp2(gp);
+        gp.npc[49].worldX = gp.tileSize * 18;
+        gp.npc[49].worldY = gp.tileSize * 93;
+        
+        gp.npc[50] = new CarUp1(gp);
+        gp.npc[50].worldX = gp.tileSize * 17;
+        gp.npc[50].worldY = gp.tileSize * 97;
+        
+        gp.npc[51] = new CarUp2(gp);
+        gp.npc[51].worldX = gp.tileSize * 17;
+        gp.npc[51].worldY = gp.tileSize * 96;
+        
+        gp.npc[52] = new CarUp1(gp);
+        gp.npc[52].worldX = gp.tileSize * 18;
+        gp.npc[52].worldY = gp.tileSize * 78;
+        
+        gp.npc[53] = new CarUp2(gp);
+        gp.npc[53].worldX = gp.tileSize * 18;
+        gp.npc[53].worldY = gp.tileSize * 77;
+        
+        gp.npc[54] = new CarUp1(gp);
+        gp.npc[54].worldX = gp.tileSize * 18;
+        gp.npc[54].worldY = gp.tileSize * 86;
+        
+        gp.npc[55] = new CarUp2(gp);
+        gp.npc[55].worldX = gp.tileSize * 18;
+        gp.npc[55].worldY = gp.tileSize * 85;
+        
+        gp.npc[56] = new CarUp1(gp);
+        gp.npc[56].worldX = gp.tileSize * 17;
+        gp.npc[56].worldY = gp.tileSize * 83;
+        
+        gp.npc[57] = new CarUp2(gp);
+        gp.npc[57].worldX = gp.tileSize * 17;
+        gp.npc[57].worldY = gp.tileSize * 82;
+        
+        gp.npc[58] = new CarUp1(gp);
+        gp.npc[58].worldX = gp.tileSize * 17;
+        gp.npc[58].worldY = gp.tileSize * 92;
+        
+        gp.npc[59] = new CarUp2(gp);
+        gp.npc[59].worldX = gp.tileSize * 17;
+        gp.npc[59].worldY = gp.tileSize * 91;
+
+        gp.npc[60] = new NPC_Cat(gp);
+        gp.npc[60].worldX = gp.tileSize * 14;
+        gp.npc[60].worldY = gp.tileSize * 15;
+
+        gp.npc[61] = new NPC_Cat(gp);
+        gp.npc[61].worldX = gp.tileSize * 65;
+        gp.npc[61].worldY = gp.tileSize * 40;
+
+        gp.npc[62] = new NPC_Cat(gp);
+        gp.npc[62].worldX = gp.tileSize * 84;
+        gp.npc[62].worldY = gp.tileSize * 73;
+
+        gp.npc[63] = new NPC_Chicken(gp);
+        gp.npc[63].worldX = gp.tileSize * 81;
+        gp.npc[63].worldY = gp.tileSize * 44;
+
+        gp.npc[64] = new NPC_Chicken(gp);
+        gp.npc[64].worldX = gp.tileSize * 80;
+        gp.npc[64].worldY = gp.tileSize * 48;
+
+        gp.npc[65] = new NPC_Chicken(gp);
+        gp.npc[65].worldX = gp.tileSize * 81;
+        gp.npc[65].worldY = gp.tileSize * 44;
+
+        gp.npc[66] = new NPC_Chicken(gp);
+        gp.npc[66].worldX = gp.tileSize * 84;
+        gp.npc[66].worldY = gp.tileSize * 58;
+
+        gp.npc[67] = new NPC_Chicken(gp);
+        gp.npc[67].worldX = gp.tileSize * 78;
+        gp.npc[67].worldY = gp.tileSize * 54;
+        
+        gp.npc[68] = new NPC_Chicken(gp);
+        gp.npc[68].worldX = gp.tileSize * 14;
+        gp.npc[68].worldY = gp.tileSize * 30;
+
     }
-    
-    
-    public void setMonster(){
+
+    public void setMonster() {
 //        gp.monster[0] = new MON_Dog(gp);
 //        gp.monster[0].worldX = gp.tileSize * 13;
 //        gp.monster[0].worldY = gp.tileSize * 10;
@@ -380,21 +340,15 @@ public class AssetSetter {
 //        gp.monster[1] = new MON_Dog(gp);
 //        gp.monster[1].worldX = gp.tileSize * 13;
 //        gp.monster[1].worldY = gp.tileSize * 25;
-        
-        
+
     }
-    
 
     public void setObject() {
-        
-        
-        
-        
+
         gp.obj[1287] = new OBJ_Eunji(gp);
         gp.obj[1287].worldX = 13 * gp.tileSize;
         gp.obj[1287].worldY = 8 * gp.tileSize;
-        
-        
+
         //=====================================
         //หัวดับเพลิง
         //=====================================
@@ -1910,64 +1864,52 @@ public class AssetSetter {
         gp.obj[381].worldY = 54 * gp.tileSize;
 
         gp.obj[385] = new OBJ_45();
-        gp.obj[385].worldX = 14 * gp.tileSize;
+        gp.obj[385].worldX = 20 * gp.tileSize;
         gp.obj[385].worldY = 38 * gp.tileSize;
 
         gp.obj[386] = new OBJ_42();
-        gp.obj[386].worldX = 13 * gp.tileSize;
+        gp.obj[386].worldX = 19 * gp.tileSize;
         gp.obj[386].worldY = 37 * gp.tileSize;
 
         gp.obj[387] = new OBJ_43();
-        gp.obj[387].worldX = 13 * gp.tileSize;
+        gp.obj[387].worldX = 19 * gp.tileSize;
         gp.obj[387].worldY = 38 * gp.tileSize;
 
-        gp.obj[388] = new OBJ_46();
-        gp.obj[388].worldX = 15 * gp.tileSize;
-        gp.obj[388].worldY = 38 * gp.tileSize;
+        gp.obj[388] = null;
 
-        gp.obj[389] = new OBJ_44();
-        gp.obj[389].worldX = 15 * gp.tileSize;
-        gp.obj[389].worldY = 37 * gp.tileSize;
 
-        gp.obj[390] = new OBJ_46();
-        gp.obj[390].worldX = 16 * gp.tileSize;
-        gp.obj[390].worldY = 38 * gp.tileSize;
+        gp.obj[389] = null;
+  
 
-        gp.obj[391] = new OBJ_44();
-        gp.obj[391].worldX = 16 * gp.tileSize;
-        gp.obj[391].worldY = 37 * gp.tileSize;
+        gp.obj[390] = null;
+   
 
-        gp.obj[392] = new OBJ_46();
-        gp.obj[392].worldX = 17 * gp.tileSize;
-        gp.obj[392].worldY = 38 * gp.tileSize;
+        gp.obj[391] = null;
 
-        gp.obj[393] = new OBJ_44();
-        gp.obj[393].worldX = 17 * gp.tileSize;
-        gp.obj[393].worldY = 37 * gp.tileSize;
 
-        gp.obj[394] = new OBJ_46();
-        gp.obj[394].worldX = 18 * gp.tileSize;
-        gp.obj[394].worldY = 38 * gp.tileSize;
+        gp.obj[392] = null;
+ 
 
-        gp.obj[395] = new OBJ_44();
-        gp.obj[395].worldX = 18 * gp.tileSize;
-        gp.obj[395].worldY = 37 * gp.tileSize;
+        gp.obj[393] = null;
 
-        gp.obj[396] = new OBJ_46();
-        gp.obj[396].worldX = 19 * gp.tileSize;
-        gp.obj[396].worldY = 38 * gp.tileSize;
 
-        gp.obj[397] = new OBJ_44();
-        gp.obj[397].worldX = 19 * gp.tileSize;
-        gp.obj[397].worldY = 37 * gp.tileSize;
+        gp.obj[394] = null;
 
-        gp.obj[398] = new OBJ_46();
-        gp.obj[398].worldX = 20 * gp.tileSize;
-        gp.obj[398].worldY = 38 * gp.tileSize;
 
-        gp.obj[399] = new OBJ_44();
-        gp.obj[399].worldX = 20 * gp.tileSize;
-        gp.obj[399].worldY = 37 * gp.tileSize;
+        gp.obj[395] = null;
+
+
+        gp.obj[396] = null;
+
+
+        gp.obj[397] = null;
+
+
+        gp.obj[398] = null;
+ 
+
+        gp.obj[399] = null;
+
 
         gp.obj[400] = new OBJ_46();
         gp.obj[400].worldX = 21 * gp.tileSize;
@@ -1976,6 +1918,7 @@ public class AssetSetter {
         gp.obj[401] = new OBJ_44();
         gp.obj[401].worldX = 21 * gp.tileSize;
         gp.obj[401].worldY = 37 * gp.tileSize;
+
 
         gp.obj[402] = new OBJ_46();
         gp.obj[402].worldX = 22 * gp.tileSize;
@@ -3263,17 +3206,17 @@ public class AssetSetter {
             gp.obj[nub] = new OBJ_66();
             gp.obj[nub].worldX = 83 * gp.tileSize;
             gp.obj[nub].worldY = (47 + i) * gp.tileSize;
-                nub++;
+            nub++;
 
             gp.obj[nub] = new OBJ_99();
             gp.obj[nub].worldX = 84 * gp.tileSize;
             gp.obj[nub].worldY = (47 + i) * gp.tileSize;
-                nub++;
+            nub++;
 
             gp.obj[nub] = new OBJ_67();
             gp.obj[nub].worldX = 83 * gp.tileSize;
             gp.obj[nub].worldY = (48 + i) * gp.tileSize;
-                nub++;
+            nub++;
 
             gp.obj[nub] = new OBJ_100();
             gp.obj[nub].worldX = 84 * gp.tileSize;
@@ -3288,32 +3231,57 @@ public class AssetSetter {
         gp.obj[1284] = new OBJ_100();
         gp.obj[1284].worldX = 78 * gp.tileSize;
         gp.obj[1284].worldY = (51) * gp.tileSize;
-        
+
         gp.obj[1285] = new OBJ_127();
         gp.obj[1285].worldX = 84 * gp.tileSize;
         gp.obj[1285].worldY = (90) * gp.tileSize;
-        
+
         gp.obj[1286] = new OBJ_127();
         gp.obj[1286].worldX = 84 * gp.tileSize;
         gp.obj[1286].worldY = (91) * gp.tileSize;
-        
+
         gp.obj[1288] = new OBJ_Egg();
         gp.obj[1288].worldX = 13 * gp.tileSize;
         gp.obj[1288].worldY = 46 * gp.tileSize;
-        
+
         gp.obj[1289] = new OBJ_Egg();
         gp.obj[1289].worldX = 87 * gp.tileSize;
         gp.obj[1289].worldY = 47 * gp.tileSize;
-        
+
         gp.obj[1290] = new OBJ_Egg();
         gp.obj[1290].worldX = 75 * gp.tileSize;
         gp.obj[1290].worldY = 55 * gp.tileSize;
-        
+
         gp.obj[1291] = new OBJ_Egg();
         gp.obj[1291].worldX = 92 * gp.tileSize;
         gp.obj[1291].worldY = 78 * gp.tileSize;
-        
-      
-       
+
+        gp.obj[1292] = new OBJ_Eunji(gp);
+        gp.obj[1292].worldX = 80 * gp.tileSize;
+        gp.obj[1292].worldY = 56 * gp.tileSize;
+
+        gp.obj[1293] = new OBJ_Eunji(gp);
+        gp.obj[1293].worldX = 77 * gp.tileSize;
+        gp.obj[1293].worldY = 88 * gp.tileSize;
+
+        gp.obj[1294] = new OBJ_Eunji(gp);
+        gp.obj[1294].worldX = 13 * gp.tileSize;
+        gp.obj[1294].worldY = 30 * gp.tileSize;
+
+        gp.obj[1295] = new OBJ_Eunji(gp);
+        gp.obj[1295].worldX = 32 * gp.tileSize;
+        gp.obj[1295].worldY = 34 * gp.tileSize;
+
+        gp.obj[1296] = new OBJ_Eunji(gp);
+        gp.obj[1296].worldX = 78 * gp.tileSize;
+        gp.obj[1296].worldY = 40 * gp.tileSize;
+
+        gp.obj[1297] = new OBJ_Egg();
+        gp.obj[1297].worldX = 14 * gp.tileSize;
+        gp.obj[1297].worldY = 24 * gp.tileSize;
+
+        gp.obj[1298] = new OBJ_Eunji(gp);
+        gp.obj[1298].worldX = 69 * gp.tileSize;
+        gp.obj[1298].worldY = 46 * gp.tileSize;
     }
 }
