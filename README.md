@@ -1,4 +1,10 @@
 # Way-To-o-Late
-[![Watch game demo](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=GriyMn9T4vw)
-![Class Diagram](\ClassDiagram)
-![Game map](\map)
+
+## Game Demo  
+[![Game Demo](https://img.youtube.com/vi/GriyMn9T4vw/maxresdefault.jpg)](https://youtu.be/GriyMn9T4vw)  
+
+## Class Diagram  
+![Class Diagram](ClassDiagram.png)  
+
+## Map  
+![Game map](map.png)  
